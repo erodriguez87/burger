@@ -3,20 +3,21 @@
 
 // ORM creation and module export
   var orm = {
-    selecAll: function(tableInput,burgRes) {
-      var queryString = "SELECT * FROM ??";
-      connection.query(queryString, [tableInput], function(err, result) {
+    selectAll: function(tableInput,cb) {
+      var queryString = "SELECT * FROM burgers";
+      console.log('select all querystring ' + queryString);
+      connection.query(queryString, function(err, result) {
         if (err) { throw err;
         }
-       burgRes(result);
+       cb(result);
       });
     },
-    insertOne: function(tableInput,col1,col2,burger,devoured,burgRes) {
+    insertOne: function(tableInput,col1,col2,burger,devoured,cb) {
       var queryString = "INSERT INTO ? (?,?) VALUES (?,?) ";
       console.log(queryString);
       connection.query(queryString, [tableInput, col1,col2, burger,devoured], function(err, result) {
         if (err) { throw err;}
-        burgRes(result);
+        cb(result);
       });
     },
     updateOne: function(tableOneCol, tableTwoForeignKey, tableOne, tableTwo) {
