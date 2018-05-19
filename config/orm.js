@@ -1,40 +1,37 @@
-var connection = require("./connection.js");
+// Connection requirement 
+  var connection = require("./connection.js");
 
-// Object Relational Mapper (ORM)
+// ORM creation and module export
+  var orm = {
+    selecAll: function(tableInput,burgRes) {
+      var queryString = "SELECT * FROM ??";
+      connection.query(queryString, [tableInput], function(err, result) {
+        if (err) { throw err;
+        }
+       burgRes(result);
+      });
+    },
+    insertOne: function(tableInput,col1,col2,burger,devoured,burgRes) {
+      var queryString = "INSERT INTO ? (?,?) VALUES (?,?) ";
+      console.log(queryString);
+      connection.query(queryString, [tableInput, col1,col2, burger,devoured], function(err, result) {
+        if (err) { throw err;}
+        burgRes(result);
+      });
+    },
+    updateOne: function(tableOneCol, tableTwoForeignKey, tableOne, tableTwo) {
+      var queryString =
+        "SELECT ??, COUNT(??) AS count FROM ?? LEFT JOIN ?? ON ??.??= ??.id GROUP BY ?? ORDER BY count DESC LIMIT 1";
 
-// The ?? signs are for swapping out table or column names
-// The ? signs are for swapping out other values
-// These help avoid SQL injection
-// https://en.wikipedia.org/wiki/SQL_injection
-var orm = {
-  selecAll: function(tableInput) {
-    var queryString = "SELECT * FROM ??";
-    connection.query(queryString, [tableInput], function(err, result) {
-      if (err) throw err;
-      console.log(result);
-    });
-  },
-  insertOne: function(whatToSelect, table, orderCol) {
-    var queryString = "INSERT INTO ? (?,?) VALUES (?,?) ";
-    console.log(queryString);
-    connection.query(queryString, [whatToSelect, table, orderCol], function(err, result) {
-      if (err) throw err;
-      console.log(result);
-    });
-  },
-  findWhoHasMost: function(tableOneCol, tableTwoForeignKey, tableOne, tableTwo) {
-    var queryString =
-      "SELECT ??, COUNT(??) AS count FROM ?? LEFT JOIN ?? ON ??.??= ??.id GROUP BY ?? ORDER BY count DESC LIMIT 1";
+      connection.query(
+        queryString,
+        [tableOneCol, tableOneCol, tableOne, tableTwo, tableTwo, tableTwoForeignKey, tableOne, tableOneCol],
+        function(err, result) {
+          if (err) { throw err; }
+          console.log(result);
+        }
+      );
+    }
+  };
 
-    connection.query(
-      queryString,
-      [tableOneCol, tableOneCol, tableOne, tableTwo, tableTwo, tableTwoForeignKey, tableOne, tableOneCol],
-      function(err, result) {
-        if (err) throw err;
-        console.log(result);
-      }
-    );
-  }
-};
-
-module.exports = orm;
+  module.exports = orm;

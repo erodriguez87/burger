@@ -2,9 +2,11 @@
   // ==============================================================================
   const express = require("express");
   const bodyParser = require("body-parser");
+  const exphbs = require("express-handlebars");
+  const routes = require("./controllers/burgers_controller.js");
   const path = require("path");
 
-  // EXPRESS setup and initializing a default port
+ // EXPRESS setup and initializing a default port
   // ==============================================================================
   // Create the express server
   const app = express();
@@ -12,13 +14,17 @@
 
 // BODY PARSER Sets up the Express app to handle data parsing
   // ==============================================================================
+  app.use(express.static("public"));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 
-// ROUTING - pointing our server to the routes
-  // ==============================================================================
-  require("./app/routes/apiRoutes.js")(app); //this needs to go first, html uses
-  require("./app/routes/htmlRoutes.js")(app);
+// ROUTING - setting up routes and handlebars
+  // // ==============================================================================
+  app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+  app.set("view engine", "handlebars");
+  
+  app.use(routes);
+  
 
 // LISTEN - start the server, let the console know the server is running
   // =============================================================================
