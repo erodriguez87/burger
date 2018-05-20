@@ -1,17 +1,15 @@
 # Title: Burger
 ### Contributor:       Eddie Rodriguez
-### GitHub URL:        https://github.com/erodriguez87/storefront
-### Video Example Customer View: https://youtu.be/aZSgXhHLNB8
-### Video Example Manager View: https://youtu.be/DfHDKznm3zk
+### GitHub URL:        https://github.com/erodriguez87/burger
+### Video Example :    https://youtu.be/YouUCLskFDA
 
-Burger logging app using mysql, node, express, handlebars and ORM
-
-Available commands:
+A basic CRUD application. This runs from a sql database uses node, express, ORM and handlebars. Users can create, update, delete and read from the database through burgers and the "devoured" status flag.
 
 ### Packages included
 
-   * [Inquirer](https://www.npmjs.com/package/inquirer)
    * [mysql](https://www.npmjs.com/package/mysql)
-   * [figlet](https://www.npmjs.com/package/figlet)
+   * [express](https://expressjs.com/)
+   * [body-parser](https://www.npmjs.com/package/body-parser)
+   * [handlebars](https://www.npmjs.com/package/handlebars)
 
 ![title image](title.png)
