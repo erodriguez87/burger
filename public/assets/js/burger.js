@@ -1,4 +1,5 @@
-console.log('in burger.js');
+
+
 $(function() {
   $(".change").on("click", function(event) {
     let id = $(this).data("id");
@@ -25,7 +26,7 @@ $(function() {
     event.preventDefault();
 
     let newBurger = {
-      burger: $("#burger").val().trim(),
+      burger_name: $("#burger").val().trim(),
       devoured: $("[name=devoured]:checked").val().trim()
     };
 
