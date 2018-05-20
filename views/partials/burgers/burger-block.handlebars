@@ -1,5 +1,3 @@
-<li>
-
 	<div class="">
 		<div class="card-body">
     	<h5 class="card-title text-center">{{burger_name}}</h5>
@@ -7,9 +5,9 @@
 		{{#if devoured}}Hungry? Eat it!{{else}}Eat it again!{{/if}}
 	</button> --}}
 
-	<button type="button" class="btn btn-info change" data-id="{{id}}" data-devour="{{devoured}}">{{#if devoured}}Hungry? Eat it!{{else}}Eat it again!{{/if}}</button>
+	<button type="button" class="btn btn-dark change" data-id="{{id}}" data-devour="{{devoured}}">{{#if devoured}}Hungry? Eat it!{{else}}Eat it again!{{/if}}</button>
 
-<button type="button" class="btn btn-danger delBurger" data-id="{{id}}">DELETE</button>
+<button type="button" class="btn btn-secondary delBurger" data-id="{{id}}">DELETE</button>
 
 	{{!-- <button class="delBurger" data-id="{{id}}">DELETE</button> --}}
 		</div>
@@ -20,5 +18,3 @@
 		{{#if devoured}}Hungry? Eat it!{{else}}Eat it again!{{/if}}
 	</button>
 	<button class="delBurger" data-id="{{id}}">DELETE</button> --}}
-
-</li>
