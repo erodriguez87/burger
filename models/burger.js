@@ -7,14 +7,21 @@ const burger = {
       cb(res);
     });
   },
-  // The variables cols and vals are arrays.
+
   insertOne: function(burgers, burger_name, devoured,newBurger,newDevoured, cb) {
-    orm.create(tableCall, cols, vals, function(res) {
+    orm.insertOne('burgers', req.params.burger_name, req.params.devoured,req.params.id,cb, function(res) {
       cb(res);
     });
   },
-  update: function(objColVals, condition, cb) {
-    orm.update(tableCall, objColVals, condition, function(res) {
+
+  updateOne: function(tableOneCol, tableTwoForeignKey,ableOne,tableTwo, cb) {
+    orm.updateOne(burger, objColVals, condition, function(res) {
+      cb(res);
+    });
+  },
+
+  delete: function(condition, cb) {
+    orm.delete("burgers", condition, function(res) {
       cb(res);
     });
   }

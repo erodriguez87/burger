@@ -1,16 +1,14 @@
+console.log('in burger.js');
 $(function() {
   $(".change").on("click", function(event) {
-    var id = $(this).data("id");
-    var devour = $(this).data("devour");
+    let id = $(this).data("id");
+    let devour = $(this).data("devour");
 
-    var devourState = {
+    let devourState = {
       devoured: devour
     };
 
-    // console.log(devourState); 
-    // console.log(id); 
-
-    // Send the PUT request.
+    // Update Request
     $.ajax("/api/burgers/" + id, {
       type: "PUT",
       data: devourState
@@ -24,12 +22,11 @@ $(function() {
   });
 
   $(".create-form").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
-    var newBurger = {
-      name: $("#burger").val().trim(),
-      sleepy: $("[name=devoured]:checked").val().trim()
+    let newBurger = {
+      burger: $("#burger").val().trim(),
+      devoured: $("[name=devoured]:checked").val().trim()
     };
 
     // Send the POST request.
@@ -47,7 +44,7 @@ $(function() {
 
   $('.delBurger').on('click', function(event) {
     event.preventDefault();
-    var id = $(this).data("id");
+    let id = $(this).data("id");
     // Send the DELETE request.
     $.ajax("/api/burgers/" + id, {
       type: "DELETE"

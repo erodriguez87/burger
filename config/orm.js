@@ -1,5 +1,5 @@
 // Connection requirement 
-  var connection = require("./connection.js");
+  const connection = require("./connection.js");
 
 // ORM creation and module export
   var orm = {
